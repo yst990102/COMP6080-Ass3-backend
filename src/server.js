@@ -260,7 +260,7 @@ app.get('/', (req, res) => res.redirect('/docs'));
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 const configData = JSON.parse(fs.readFileSync('../frontend/src/config.json'));
-const port = 'BACKEND_PORT' in configData ? configData.BACKEND_PORT : 5033;
+const port = 'BACKEND_PORT' in configData ? configData.BACKEND_PORT : process.env.PORT;
 
 const server = app.listen(port, () => {
   console.log(`Backend is now listening on port ${port}!`);
