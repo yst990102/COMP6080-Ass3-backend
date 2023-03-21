@@ -263,7 +263,7 @@ app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 // const port = 'BACKEND_PORT' in configData ? configData.BACKEND_PORT : process.env.PORT;
 const port = process.env.PORT || 5005;
 
-const server = app.listen(port, () => {
+const server = app.listen(port, '0.0.0.0', () => {
   console.log(`Backend is now listening on port ${port}!`);
   console.log(`For API docs, navigate to http://localhost:${port}`);
 });
