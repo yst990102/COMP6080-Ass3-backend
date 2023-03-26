@@ -1,5 +1,8 @@
 FROM node:16
 
+COPY /ssl/cert.crt /etc/ssl/certs/
+COPY /ssl/cert.key /etc/ssl/private/
+
 # Create app directory
 WORKDIR /usr/src/app
 
