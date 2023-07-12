@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: comp6080-ass3-backend
+    ports:
+      - 5005:5005
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - NODE_ENV=production
