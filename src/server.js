@@ -264,8 +264,15 @@ app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 const port = process.env.PORT || 5005;
 
 const server = app.listen(port, '0.0.0.0', () => {
-  console.log(`Backend is now listening on port ${port}!`);
-  console.log(`For API docs, navigate to http://${process.env.IP}:${port}`);
+  const request = require('request');
+  request('https://api.ipify.org', function(error, response, body) {
+    if (!error && response.statusCode === 200) {
+      const ip = body;
+      console.log('IP地址:', ip);
+    }
+    console.log(`Backend is now listening on port ${port}!`);
+    console.log(`For API docs, navigate to http://${ip}:${port}`);
+  });
 });
 
 export default server;
